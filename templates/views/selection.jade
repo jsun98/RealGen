@@ -1,0 +1,84 @@
+extends ../layouts/default
+
+block intro
+	section.pad
+	
+block content
+	.container: .jumbotron
+		// p The MLS number you entered is: #{data.MLS}
+		section#banner
+			if selectionMade
+				header
+					h2
+						| Model Template #{formData.selection}
+					p
+						| Click Image for Preview
+				if formData.selection == 1
+					a.image.featured(href='previews/website1/web.html', target='_blank')
+						img(src='images/preview_lg/preview1.jpg', alt='')
+				else if formData.selection == 2
+					a.image.featured(href='previews/website2/web.html', target='_blank')
+						img(src='images/preview_lg/preview2.jpg', alt='')
+				else if formData.selection == 3
+					a.image.featured(href='previews/website3/web.html', target='_blank')
+						img(src='images/preview_lg/preview3.jpg', alt='')
+				else
+					a.image.featured(href='previews/website4/web.html', target='_blank')
+						img(src='images/preview_lg/preview4.jpg', alt='')
+				p 
+					| $9.99
+				p Are you sure you want to purchase this?
+				form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+					input(type='hidden', name='cmd', value='_s-xclick')
+					input(type='hidden', name='encrypted', value='-----BEGIN PKCS7-----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-----END PKCS7-----')
+					input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+					img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+				form(method='post')
+					input(type='hidden', name='back', value='1')
+					button(type='submit', id='backToSelection') Back to Selection
+				form(method='post' action='/download')
+					input(type='hidden', name='selection', value=formData.selection)
+					button(type='submit') Skip Payment (for testing)
+			else
+				header
+					p
+						| Congratulations! The MLS# you entered is valid!
+					p
+						| You may now choose a template for your website
+				p 
+				div(class='wrapper style2' id='about')
+					form(method='post' id='imgSelect')
+						hr
+						header
+							h2
+								| Template One
+							p
+								| Insert Shit Here
+						article#main.container.special
+							input(type='image', name='selection', value='1', src='images/preview_lg/preview1.jpg', class='one', alt='Image cannot be displayed')
+
+						hr
+						header
+							h2
+								| Template Two
+							p
+								| Insert Shit Here
+						article#main.container.special
+							input(type='image', name='selection', value='2', src='images/preview_lg/preview2.jpg', class='two', alt='Image cannot be displayed')
+						hr
+						header
+							h2
+								| Template Three
+							p
+								| Insert Shit Here
+						article#main.container.special
+							input(type='image', name='selection', value='3', src='images/preview_lg/preview3.jpg', class='three', alt='Image cannot be displayed')
+						hr
+						header
+							h2
+								| Template Four
+							p
+								| Insert Shit Here
+						article#main.container.special
+							input(type='image', name='selection', value='4', src='images/preview_lg/preview4.jpg', class='four', alt='Image cannot be displayed')
+						hr
