@@ -11,6 +11,7 @@ var keystone = require('keystone');
 
 keystone.init({
 
+	'cloudinary config': 'cloudinary://774842764399264:tobr8EZK-wKOek3ehzVr3iV2Pak@rube0414',
 	'name': 'Home Info Generator',
 	'brand': 'Home Info Generator',
 	
