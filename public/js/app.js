@@ -70768,6 +70768,10 @@ var _mlsinput = require('./mlsinput');
 
 var _mlsinput2 = _interopRequireDefault(_mlsinput);
 
+var _nav = require('./nav');
+
+var _nav2 = _interopRequireDefault(_nav);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -70801,7 +70805,12 @@ var App = function (_Component) {
 		// }
 
 		value: function render() {
-			return _react2.default.createElement(_mlsinput2.default, null);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_nav2.default, null),
+				_react2.default.createElement(_mlsinput2.default, null)
+			);
 		}
 	}]);
 
@@ -70810,7 +70819,7 @@ var App = function (_Component) {
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"./mlsinput":993,"react":646,"react-dom":494}],993:[function(require,module,exports){
+},{"./mlsinput":993,"./nav":994,"react":646,"react-dom":494}],993:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -70848,6 +70857,21 @@ var MLSInput = function (_Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'MLSInputContainer' },
+				_react2.default.createElement(
+					_semanticUiReact.Header,
+					{ as: 'h1', textAlign: 'center', className: 'brandname', icon: true },
+					_react2.default.createElement(
+						'span',
+						{ className: 'brandname' },
+						'RealGen'
+					),
+					_react2.default.createElement(
+						_semanticUiReact.Header.Subheader,
+						null,
+						'Generate Attractive Real Estate Listing Web Templates In Seconds.'
+					)
+				),
+				_react2.default.createElement(_semanticUiReact.Divider, null),
 				_react2.default.createElement(_semanticUiReact.Input, {
 					action: {
 						color: 'black',
@@ -70856,7 +70880,7 @@ var MLSInput = function (_Component) {
 						icon: 'cloud upload'
 					},
 					className: 'MLSInput',
-					placeholder: 'Enter Multiple Listing Service Number...'
+					placeholder: 'Enter Multiple Listing Service (MLS) Number'
 				})
 			);
 		}
@@ -70866,5 +70890,94 @@ var MLSInput = function (_Component) {
 }(_react.Component);
 
 exports.default = MLSInput;
+
+},{"react":646,"semantic-ui-react":748}],994:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = require('semantic-ui-react');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+	_inherits(Nav, _Component);
+
+	function Nav(props) {
+		_classCallCheck(this, Nav);
+
+		var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+		_this.state = { activeItem: 'home' };
+		_this.handleItemClick = _this.handleItemClick.bind(_this);
+		return _this;
+	}
+
+	_createClass(Nav, [{
+		key: 'handleItemClick',
+		value: function handleItemClick(e, _ref) {
+			var name = _ref.name;
+
+			this.setState({ activeItem: name });
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var activeItem = this.state.activeItem;
+
+			return _react2.default.createElement(
+				_semanticUiReact.Menu,
+				{ stackable: true },
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Item,
+					{ name: 'home', active: activeItem === 'home', onClick: this.handleItemClick },
+					'Home'
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Item,
+					{ name: 'about', active: activeItem === 'about', onClick: this.handleItemClick },
+					'About'
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Item,
+					{ name: 'contact us', active: activeItem === 'contact us', onClick: this.handleItemClick },
+					'Contact Us'
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Menu,
+					{ position: 'right' },
+					_react2.default.createElement(
+						_semanticUiReact.Menu.Item,
+						null,
+						_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign In', icon: 'id card outline' })
+					),
+					_react2.default.createElement(
+						_semanticUiReact.Menu.Item,
+						null,
+						_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign Up', icon: 'add user' })
+					)
+				)
+			);
+		}
+	}]);
+
+	return Nav;
+}(_react.Component);
+
+exports.default = Nav;
 
 },{"react":646,"semantic-ui-react":748}]},{},[992]);

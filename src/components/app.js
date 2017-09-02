@@ -1,4 +1,5 @@
 import MLSInput from './mlsinput'
+import Nav from './nav'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
@@ -8,7 +9,12 @@ class App extends Component {
 	// }
 
 	render () {
-		return <MLSInput />
+		return (
+			<div>
+				<Nav />
+				<MLSInput />
+			</div>
+		)
 	}
 }
 
