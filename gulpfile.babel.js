@@ -27,7 +27,7 @@ var gulp = require('gulp'),
 		src: {
 			jsx: 'src/components',
 			vendor: 'src/vendor',
-			sass: 'src/sass',
+			sass: 'src/scss',
 		},
 		dest: {
 			js: 'public/js',

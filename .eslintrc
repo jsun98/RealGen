@@ -12,6 +12,7 @@
     "recommended/esnext/style-guide",
     "recommended/node",
     "recommended/node/style-guide",
+    "plugin:react/recommended",
     "keystone",
   ],
   "rules": {
@@ -26,6 +27,7 @@
     "no-script-url": 0,
     "no-invalid-this": 0,
     "no-sync": 0,
+    "sort-imports": 0,
   },
   "env": {
     "browser": true,
