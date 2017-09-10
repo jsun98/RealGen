@@ -25,7 +25,7 @@ var gulp = require('gulp'),
 	},
 	dir = {
 		src: {
-			jsx: 'src/components',
+			jsx: 'src/',
 			vendor: 'src/vendor',
 			sass: 'src/scss',
 		},
@@ -45,7 +45,7 @@ gulp.task('eslint', () => gulp.src(path.join(dir.src.jsx, '*.js'))
 	.pipe(eslint.failAfterError()))
 
 gulp.task('jsx', () =>
-	browserify(path.join(dir.src.jsx, 'app.js'))
+	browserify(path.join(dir.src.jsx, 'index.js'))
 		.transform(babelify, { presets: [ 'es2015', 'react' ] })
 		.bundle()
 		.pipe(source('app.js'))
@@ -72,7 +72,7 @@ gulp.task('sass', () => {
 
 // Watch JS/JSX and Sass files
 gulp.task('watch', () => {
-	gulp.watch(path.join(dir.src.jsx, '*.{js,jsx}'), [ 'jsx' ])
+	gulp.watch(path.join(dir.src.jsx, '/**/*.{js,jsx}'), [ 'jsx' ])
 	gulp.watch(path.join(dir.src.sass, '*.scss'), [ 'sass' ])
 })
 

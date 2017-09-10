@@ -1,9 +1,9 @@
 import MLSInput from './mlsinput'
-import Nav from './nav'
+import Nav from '../containers/nav'
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 
-class App extends Component {
+
+export default class App extends Component {
 	// constructor (props) {
 	// 	super(props)
 	// }
@@ -17,8 +17,3 @@ class App extends Component {
 		)
 	}
 }
-
-ReactDOM.render(
-	<App />,
-	document.getElementById('root')
-)
