@@ -39,13 +39,20 @@ keystone.set('500', (err, req, res, next) => {
 })
 
 // Import Route Controllers
-var routes = { views: importRoutes('./views') }
+var routes = {
+	views: importRoutes('./views'),
+	api: importRoutes('./api'),
+}
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index)
-	app.all('/contact', routes.views.contact)
+
+
+	// REST API
+	app.get('/template/:id', routes.api.template)
+	// app.all('/contact', routes.views.contact)
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
