@@ -1,55 +1,27 @@
-// Simulate config options from your production environment by
-// customising the .env file in your project's root folder.
-require('dotenv').config()
+var express = require('express'),
+	path = require('path'),
+	favicon = require('serve-favicon'),
+	logger = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser = require('body-parser'),
+	routes = require('./routes/index'),
+	app = express(),
+	port = process.env.PORT || 3000
 
-// Require keystone
-var keystone = require('keystone')
+// view engine setup
+app.set('views', path.join(__dirname, 'templates/views'))
+app.set('view engine', 'ejs')
 
+// uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
 
-// Initialise Keystone with your project's configuration.
-// See http://keystonejs.com/guide/config for available options
-// and documentation.
+routes(app)
 
-keystone.init({
-	'name': 'RealGen',
-	'brand': 'RealGen',
-
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
-	'view engine': 'ejs',
-
-	'auto update': true,
-	'session': true,
-	'session store': 'mongo',
-	'auth': true,
-	'user model': 'User',
+app.listen(port, () => {
+	console.log('Application started on port ' + port)
 })
-
-// Load your project's Models
-keystone.import('models')
-
-// Setup common locals for your templates. The following are required for the
-// bundled templates and layouts. Any runtime locals (that should be set uniquely
-// for each request) should be added to ./routes/middleware.js
-keystone.set('locals', {
-	_: require('lodash'),
-	env: keystone.get('env'),
-	utils: keystone.utils,
-	editable: keystone.content.editable,
-})
-
-// Load your project's Routes
-keystone.set('routes', require('./routes'))
-
-
-// Configure the navigation bar in Keystone's Admin UI
-keystone.set('nav', {
-	enquiries: 'enquiries',
-	users: 'users',
-})
-
-// Start Keystone to connect to your database and initialise the web server
-
-
-keystone.start()

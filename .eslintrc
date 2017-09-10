@@ -13,7 +13,6 @@
     "recommended/node",
     "recommended/node/style-guide",
     "plugin:react/recommended",
-    "keystone",
   ],
   "rules": {
     "one-var": 1,
