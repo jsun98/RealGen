@@ -1,22 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+
 
 const Nav = ({ activeItem, onClick }) => {
-	console.log(activeItem)
-	console.log(onClick)
 	return (
 		<Menu stackable>
 			<Menu.Item name="home" active={activeItem === 'home'} onClick={onClick}>
-			Home
+				<Link to="/">Home</Link>
 			</Menu.Item>
 
 			<Menu.Item name="about" active={activeItem === 'about'} onClick={onClick}>
-			About
+				<Link to="/about">About</Link>
 			</Menu.Item>
 
 			<Menu.Item name="contact us" active={activeItem === 'contact us'} onClick={onClick}>
-			Contact Us
+				<Link to="/contact">Contact Us</Link>
 			</Menu.Item>
 
 			<Menu.Menu position="right">
@@ -37,21 +37,3 @@ Nav.propTypes = {
 }
 
 export default Nav
-//
-// export default class Nav extends Component {
-// 	constructor (props) {
-// 		super(props)
-// 		this.state = { activeItem: 'home' }
-// 		this.handleItemClick = this.handleItemClick.bind(this)
-// 	}
-//
-// 	handleItemClick (e, { name }) {
-// 		this.setState({ activeItem: name })
-// 	}
-//
-// 	render () {
-// 		const activeItem = this.state.activeItem
-//
-//
-// 	}
-// }

@@ -1,19 +1,24 @@
-import MLSInput from './mlsinput'
+import Hero from './hero'
 import Nav from '../containers/nav'
-import React, { Component } from 'react'
+import About from './about'
+import React from 'react'
+import {
+	BrowserRouter as Router,
+	Route,
+	// Link,
+} from 'react-router-dom'
 
 
-export default class App extends Component {
-	// constructor (props) {
-	// 	super(props)
-	// }
-
-	render () {
-		return (
+const App = () => {
+	return (
+		<Router>
 			<div>
 				<Nav />
-				<MLSInput />
+				<Route exact path="/" component={Hero}/>
+				<Route path="/about" component={About}/>
 			</div>
-		)
-	}
+		</Router>
+	)
 }
+
+export default App
