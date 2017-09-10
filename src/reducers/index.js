@@ -1,9 +1,9 @@
-const initialState = { navActiveItem: 'home' }
+const initialState = { activeItem: 'home' }
 
 const app = (state = initialState, action) => {
 	switch (action.type) {
-		case 'UPDATE_NAV_HIGHLIGHT':
-			return Object.assign({}, state, { navActiveItem: action.choice })
+		case 'UPDATE_NAV':
+			return Object.assign({}, state, { activeItem: action.choice })
 		default:
 			return state
 	}

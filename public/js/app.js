@@ -65437,9 +65437,9 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var updateNavHighlight = exports.updateNavHighlight = function updateNavHighlight(choice) {
+var updateNav = exports.updateNav = function updateNav(choice) {
 	return {
-		type: 'UPDATE_NAV_HIGHLIGHT',
+		type: 'UPDATE_NAV',
 		choice: choice
 	};
 };
@@ -65663,48 +65663,42 @@ var Nav = function Nav(_ref) {
 	var activeItem = _ref.activeItem,
 	    onClick = _ref.onClick;
 
+	var currPage = activeItem === 'home' ? '' : activeItem;
 	return _react2.default.createElement(
-		_semanticUiReact.Menu,
-		{ stackable: true },
+		'div',
+		null,
+		_react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/' + currPage }),
 		_react2.default.createElement(
-			_semanticUiReact.Menu.Item,
-			{ name: 'home', active: activeItem === 'home', onClick: onClick },
-			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/' },
-				'Home'
-			)
-		),
-		_react2.default.createElement(
-			_semanticUiReact.Menu.Item,
-			{ name: 'about', active: activeItem === 'about', onClick: onClick },
-			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/about' },
-				'About'
-			)
-		),
-		_react2.default.createElement(
-			_semanticUiReact.Menu.Item,
-			{ name: 'contact us', active: activeItem === 'contact us', onClick: onClick },
-			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/' },
-				'Contact Us'
-			)
-		),
-		_react2.default.createElement(
-			_semanticUiReact.Menu.Menu,
-			{ position: 'right' },
+			_semanticUiReact.Menu,
+			{ stackable: true },
 			_react2.default.createElement(
 				_semanticUiReact.Menu.Item,
-				null,
-				_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign In', icon: 'id card outline' })
+				{ name: 'home', active: activeItem === 'home', onClick: onClick },
+				'Home'
 			),
 			_react2.default.createElement(
 				_semanticUiReact.Menu.Item,
-				null,
-				_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign Up', icon: 'add user' })
+				{ name: 'about', active: activeItem === 'about', onClick: onClick },
+				'About'
+			),
+			_react2.default.createElement(
+				_semanticUiReact.Menu.Item,
+				{ name: 'contact us', active: activeItem === 'contact us', onClick: onClick },
+				'Contact Us'
+			),
+			_react2.default.createElement(
+				_semanticUiReact.Menu.Menu,
+				{ position: 'right' },
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Item,
+					null,
+					_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign In', icon: 'id card outline' })
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Menu.Item,
+					null,
+					_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign Up', icon: 'add user' })
+				)
 			)
 		)
 	);
@@ -65735,7 +65729,7 @@ var _nav2 = _interopRequireDefault(_nav);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-	return { activeItem: state.navActiveItem };
+	return { activeItem: state.activeItem };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -65743,7 +65737,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		onClick: function onClick(e, _ref) {
 			var name = _ref.name;
 
-			dispatch((0, _index.updateNavHighlight)(name));
+			dispatch((0, _index.updateNav)(name));
 		}
 	};
 };
@@ -65791,15 +65785,15 @@ _reactDom2.default.render(_react2.default.createElement(
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var initialState = { navActiveItem: 'home' };
+var initialState = { activeItem: 'home' };
 
 var app = function app() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	var action = arguments[1];
 
 	switch (action.type) {
-		case 'UPDATE_NAV_HIGHLIGHT':
-			return Object.assign({}, state, { navActiveItem: action.choice });
+		case 'UPDATE_NAV':
+			return Object.assign({}, state, { activeItem: action.choice });
 		default:
 			return state;
 	}

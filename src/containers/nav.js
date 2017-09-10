@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import { updateNavHighlight } from '../actions/index'
+import { updateNav } from '../actions/index'
 import Nav from '../components/nav'
 
-const mapStateToProps = state => ({ activeItem: state.navActiveItem })
+const mapStateToProps = state => ({ activeItem: state.activeItem })
 
 const mapDispatchToProps = dispatch => ({
 	onClick: (e, { name }) => {
-		dispatch(updateNavHighlight(name))
+		dispatch(updateNav(name))
 	},
 })
 

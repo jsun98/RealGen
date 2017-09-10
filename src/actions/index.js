@@ -1,6 +1,6 @@
-export const updateNavHighlight = choice => {
+export const updateNav = choice => {
 	return {
-		type: 'UPDATE_NAV_HIGHLIGHT',
+		type: 'UPDATE_NAV',
 		choice,
 	}
 }
