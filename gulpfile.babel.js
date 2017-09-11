@@ -91,6 +91,9 @@ gulp.task('serve', () => {
 		script: 'app.js',
 		ext: 'js ejs',
 		verbose: true,
+		ignore: [
+			'src/**/*',
+		],
 	})
 })
 

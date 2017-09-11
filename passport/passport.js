@@ -35,7 +35,8 @@ module.exports = function (passport) {
 
 			newUser.email = email
 			newUser.password = newUser.generateHash(password)
-			newUser.name = req.body.name
+			newUser.first_name = req.body.first_name
+			newUser.last_name = req.body.last_name
 
 			newUser.save()
 				.then(savedUser => {
@@ -53,7 +54,7 @@ module.exports = function (passport) {
 	// LOGIN =============================================================
 	// =========================================================================
 
-	passport.use('login', new LocalStrategy({
+	passport.use('signin', new LocalStrategy({
 		usernameField: 'email',
 		passwordField: 'password',
 		passReqToCallback: true,
@@ -61,19 +62,19 @@ module.exports = function (passport) {
 		User.findOne({ email })
 			.exec((err, User) => {
 
-				if (err)					{
+				if (err)
 					return done(err)
-				}
 
 
-				if (!User)					{
+
+				if (!User)
 					return done(null, false, req.flash('error', 'Email Not Found'))
-				}
 
 
-				if (!User.validPassword(password))					{
+
+				if (!User.validPassword(password))
 					return done(null, false, req.flash('error', 'Wrong Password'))
-				}
+
 
 
 				return done(null, User)

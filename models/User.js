@@ -1,42 +1,41 @@
-var keystone = require('keystone')
+// app/models/user.js
+// load the things we need
+const mongoose = require('mongoose'),
+	bcrypt = require('bcrypt-nodejs')
 
-var Types = keystone.Field.Types
-var User = new keystone.List('User')
+// define the schema for our user model
 
-User.add({
-	name: {
-		type: Types.Name,
-		required: true,
-		index: true,
-	},
+var userSchema = new mongoose.Schema({
 	email: {
-		type: Types.Email,
-		initial: true,
-		required: true,
+		type: String,
 		unique: true,
-		index: true,
+		lowercase: true,
+		required: true,
 	},
 	password: {
-		type: Types.Password,
-		initial: true,
+		type: String,
 		required: true,
 	},
-}, 'Permissions', {
-	isAdmin: {
-		type: Boolean,
-		label: 'Can access Keystone',
-		index: true,
+	first_name: {
+		type: String,
+		required: true,
+	},
+	last_name: {
+		type: String,
+		required: true,
 	},
 })
 
-// Provide access to Keystone
-User.schema.virtual('canAccessKeystone').get(function () {
-	return this.isAdmin
-})
+// methods ======================
+// generating a hash
+userSchema.methods.generateHash = function (password) {
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
 
+// checking if password is valid
+userSchema.methods.validPassword = function (password) {
+	return bcrypt.compareSync(password, this.password)
+}
 
-/**
- * Registration
- */
-User.defaultColumns = 'name, email, isAdmin'
-User.register()
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema)
