@@ -1,4 +1,8 @@
-const initialState = { activeItem: 'home' }
+const initialState = {
+	activeItem: 'home',
+	isSigninOpen: false,
+	isSignupOpen: false,
+}
 
 const app = (state = initialState, action) => {
 	switch (action.type) {

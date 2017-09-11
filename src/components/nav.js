@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
+import SignIn from './signin'
+import SignUp from './signup'
 
 const Nav = ({ activeItem, onClick }) => {
 	const currPage = activeItem === 'home' ? '' : activeItem
@@ -23,10 +25,10 @@ const Nav = ({ activeItem, onClick }) => {
 
 				<Menu.Menu position="right">
 					<Menu.Item>
-						<Button basic color="black" content="Sign In" icon="id card outline" />
+						<SignIn />
 					</Menu.Item>
 					<Menu.Item>
-						<Button basic color="black" content="Sign Up" icon="add user" />
+						<SignUp />
 					</Menu.Item>
 				</Menu.Menu>
 			</Menu>

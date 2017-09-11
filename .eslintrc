@@ -28,6 +28,7 @@
     "no-sync": 0,
     "sort-imports": 0,
     "arrow-body-style": 0,
+    "no-extra-parens": 0,
   },
   "env": {
     "browser": true,

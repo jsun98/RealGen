@@ -65514,7 +65514,7 @@ var App = function App() {
 
 exports.default = App;
 
-},{"../containers/nav":935,"./about":929,"./hero":931,"react":697,"react-router-dom":659}],931:[function(require,module,exports){
+},{"../containers/nav":937,"./about":929,"./hero":931,"react":697,"react-router-dom":659}],931:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -65657,6 +65657,14 @@ var _semanticUiReact = require('semantic-ui-react');
 
 var _reactRouterDom = require('react-router-dom');
 
+var _signin = require('./signin');
+
+var _signin2 = _interopRequireDefault(_signin);
+
+var _signup = require('./signup');
+
+var _signup2 = _interopRequireDefault(_signup);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Nav = function Nav(_ref) {
@@ -65692,12 +65700,12 @@ var Nav = function Nav(_ref) {
 				_react2.default.createElement(
 					_semanticUiReact.Menu.Item,
 					null,
-					_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign In', icon: 'id card outline' })
+					_react2.default.createElement(_signin2.default, null)
 				),
 				_react2.default.createElement(
 					_semanticUiReact.Menu.Item,
 					null,
-					_react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign Up', icon: 'add user' })
+					_react2.default.createElement(_signup2.default, null)
 				)
 			)
 		)
@@ -65711,7 +65719,101 @@ Nav.propTypes = {
 
 exports.default = Nav;
 
-},{"prop-types":504,"react":697,"react-router-dom":659,"semantic-ui-react":807}],935:[function(require,module,exports){
+},{"./signin":935,"./signup":936,"prop-types":504,"react":697,"react-router-dom":659,"semantic-ui-react":807}],935:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = require('semantic-ui-react');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SignIn = function SignIn() {
+	return _react2.default.createElement(
+		_semanticUiReact.Modal,
+		{ closeIcon: true, size: 'small', trigger: _react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign In', icon: 'id card outline' }) },
+		_react2.default.createElement(
+			_semanticUiReact.Modal.Header,
+			null,
+			'Sign In'
+		),
+		_react2.default.createElement(
+			_semanticUiReact.Modal.Content,
+			null,
+			_react2.default.createElement(
+				_semanticUiReact.Form,
+				null,
+				_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'email', label: 'Email', placeholder: 'Email' }),
+				_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'password', label: 'Password', placeholder: 'Password' }),
+				_react2.default.createElement(
+					_semanticUiReact.Form.Field,
+					{ secondary: true, control: _semanticUiReact.Button },
+					'Submit'
+				)
+			)
+		)
+	);
+};
+
+exports.default = SignIn;
+
+},{"react":697,"semantic-ui-react":807}],936:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = require('semantic-ui-react');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SignIn = function SignIn() {
+	return _react2.default.createElement(
+		_semanticUiReact.Modal,
+		{ closeIcon: true, size: 'small', trigger: _react2.default.createElement(_semanticUiReact.Button, { basic: true, color: 'black', content: 'Sign Up', icon: 'add user' }) },
+		_react2.default.createElement(
+			_semanticUiReact.Modal.Header,
+			null,
+			'Sign Up'
+		),
+		_react2.default.createElement(
+			_semanticUiReact.Modal.Content,
+			null,
+			_react2.default.createElement(
+				_semanticUiReact.Form,
+				null,
+				_react2.default.createElement(
+					_semanticUiReact.Form.Group,
+					{ widths: 'equal' },
+					_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'first_name', label: 'First name', placeholder: 'First name' }),
+					_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'last_name', label: 'Last name', placeholder: 'Last name' })
+				),
+				_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'email', label: 'Email', placeholder: 'Email' }),
+				_react2.default.createElement(_semanticUiReact.Form.Field, { control: _semanticUiReact.Input, name: 'password', label: 'Password', placeholder: 'Password' }),
+				_react2.default.createElement(
+					_semanticUiReact.Form.Field,
+					{ secondary: true, control: _semanticUiReact.Button },
+					'Submit'
+				)
+			)
+		)
+	);
+};
+
+exports.default = SignIn;
+
+},{"react":697,"semantic-ui-react":807}],937:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -65746,7 +65848,7 @@ var NavContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)
 
 exports.default = NavContainer;
 
-},{"../actions/index":928,"../components/nav":934,"react-redux":642}],936:[function(require,module,exports){
+},{"../actions/index":928,"../components/nav":934,"react-redux":642}],938:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -65779,13 +65881,17 @@ _reactDom2.default.render(_react2.default.createElement(
 	_react2.default.createElement(_app2.default, null)
 ), document.getElementById('root'));
 
-},{"./components/app":930,"./reducers/index":937,"react":697,"react-dom":506,"react-redux":642,"redux":703}],937:[function(require,module,exports){
+},{"./components/app":930,"./reducers/index":939,"react":697,"react-dom":506,"react-redux":642,"redux":703}],939:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var initialState = { activeItem: 'home' };
+var initialState = {
+	activeItem: 'home',
+	isSigninOpen: false,
+	isSignupOpen: false
+};
 
 var app = function app() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -65801,4 +65907,4 @@ var app = function app() {
 
 exports.default = app;
 
-},{}]},{},[936]);
+},{}]},{},[938]);
